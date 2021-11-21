@@ -36,16 +36,28 @@ VERSION="1.5.9"
 SID="SIDPLACEHOLDER"
 
 # How frequently should the data be collected (do not modify this, unless instructed to do so)
-CollectEveryXSeconds=3
+if [ -z $INTERVAL ]; then
+	CollectEveryXSeconds=3
+else
+	CollectEveryXSeconds=$INTERVAL
+fi
 
 # Runtime, in seconds (do not modify this, unless instructed to do so)
-Runtime=60
+if [ -z $RUNTIME ]; then
+	Runtime=60
+else
+	Runtime=$RUNTIME
+fi
 
 # Network Interfaces
 # * if you leave this setting empty our agent will detect and monitor all of your active network interfaces
 # * if you wish to monitor just one interface, fill its name down below (ie: "eth1")
 # * if you wish to monitor just some specific interfaces, fill their names below separated by comma (ie: "eth0,eth1,eth2")
-NetworkInterfaces=""
+if [ -z $NETWORK_INTERFACES ]; then
+	NetworkInterfaces=""
+else
+	NetworkInterfaces="$NETWORK_INTERFACES"
+fi
 
 # Check Services
 # * separate service names by comma (,) with a maximum of 10 services to be monitored (ie: "ssh,mysql,apache2,nginx")
