@@ -36,17 +36,19 @@ VERSION="1.5.9"
 SID="SIDPLACEHOLDER"
 
 # How frequently should the data be collected (do not modify this, unless instructed to do so)
-if [ -z $INTERVAL ]; then
+if [ -z $COLLECT_INTERVAL ]; then
 	CollectEveryXSeconds=3
 else
-	CollectEveryXSeconds=$INTERVAL
+	CollectEveryXSeconds=$COLLECT_INTERVAL
+	echo "Collecting data every $COLLECT_INTERVAL seconds"
 fi
 
 # Runtime, in seconds (do not modify this, unless instructed to do so)
-if [ -z $RUNTIME ]; then
+if [ -z $UPLOAD_INTERVAL ]; then
 	Runtime=60
 else
-	Runtime=$RUNTIME
+	Runtime=$UPLOAD_INTERVAL
+	echo "Runtime set to $UPLOAD_INTERVAL seconds"
 fi
 
 # Network Interfaces
@@ -57,6 +59,7 @@ if [ -z $NETWORK_INTERFACES ]; then
 	NetworkInterfaces=""
 else
 	NetworkInterfaces="$NETWORK_INTERFACES"
+	echo "Network interface(s) set to $NETWORK_INTERFACES"
 fi
 
 # Check Services
